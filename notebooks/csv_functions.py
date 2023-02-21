@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 
 #creates inititial dataframe for wiki pages
@@ -19,9 +20,25 @@ def count_words(wiki_page_text):
    for text in wiki_page_text:
      temp_num = text.count(" ")
      temp_num_list.append(temp_num)
-   for num in temp_num_list:
-      total_num = int(num) + total_num
+     temp_num = 0
+   total_num = np.sum(temp_num_list)
    return total_num
 
+def count_sections(wiki_page_text):
+   section_total = 0
+   section_num_list = []
+  
+   for text in wiki_page_text:
+      temp_text = str.lower(text)
+      temp_num = temp_text.count("section")
+      section_num_list.append(temp_num)
+      temp_num = 0
+   section_total = np.sum(section_num_list)
+   
+   
+   return section_total
 
+
+def update_main_csv(df, page_name, word_count, section_count):
+    new_df = df[len(df)] = [page_name,word_count,section_count]
    
