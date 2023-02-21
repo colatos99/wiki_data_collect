@@ -19,6 +19,10 @@ def  write_page_text(page_name=str, page=str):
             print("File Already exists!")
         else:
             page_file.write(page)
+def read_page_text(page_name=str):
+    with open(page_path_full + (page_name) + ".txt", 'r') as page_file:
+        page = page_file.readlines()
+        return page
 
 def create_init_main_csv():
     csv_num = 1
