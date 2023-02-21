@@ -29,3 +29,24 @@ def create_init_main_csv():
 def show_csv_copy_info():
     info = pd.read_pickle(data_path_full + "csv_copy_num_store.pickle")
     return info
+
+def write_csv_main(df_to_write):
+    df_to_write.to_csv(data_path_full + "csv_main.csv")
+    '''
+    copy_info_df = pd.read_pickle(data_path_full  + "csv_copy_num_store.pickle")
+    
+    copy_num  = int(copy_info_df.iloc[0][0])
+    copy_num += 1
+    
+    copy_info_df[0][0] = copy_num
+    copy_info_df.to_pickle(data_path_full + "csv_copy_num_store.pickle")
+    '''
+    def read_page_text(page):
+        with open(page_path_full + page + ".txt", "x", encoding="utf-8") as page_file_r:
+            page_read = page_file_r.readline()
+            return page_read
+
+def get_csv_main():
+    
+    csv_read = pd.read_csv(data_path_full + "csv_main.csv")
+    return csv_read
