@@ -15,24 +15,19 @@ def create_main_df():
   # data_df.to_csv("E:\python_projects\wiki_data_collect\data\\)" + "main_csv_file.csv")
    
 
-def count_words(wiki_page_text):
-   temp_num_list  = []
-   total_num = 0
-   num_counter = 0
-   for text in wiki_page_text:
-     temp_num = text.count(" ")
-     temp_num_list.append(temp_num)
-     temp_num = 0
-   total_num = np.sum(temp_num_list)
-   return total_num
-
+def count_words(page_name):
+   word_list = seperate_wiki_page(page_name)
+   word_count = len(word_list)
+   return word_count
+   
+     
 def count_sections(wiki_page_text):
    section_total = 0
    section_num_list = []
   
    for text in wiki_page_text:
       temp_text = str.lower(text)
-      temp_num = temp_text.count("section")
+      temp_num = temp_text.count("/n/n")
       section_num_list.append(temp_num)
       temp_num = 0
    section_total = np.sum(section_num_list)
@@ -48,3 +43,11 @@ def update_main_csv(df, page_name, section_num, word_num):
    main_df.loc[len(main_df.index)] = new_page
    fh.write_csv_main(main_df)
   
+def seperate_wiki_page(wiki_page):
+     word_list = []
+     for text in wiki_page:
+         temp_string = str(text)
+         word = str.split(temp_string, " ")
+         word_list.append(word)
+     return word_list
+    
