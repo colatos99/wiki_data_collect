@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import file_handler as fh
 
 
 #creates inititial dataframe for wiki pages
@@ -7,10 +8,11 @@ import numpy as np
 def create_main_df():
    data = {"page": [], "section_num": [], "word_num": []}
    main_df_csv = pd.DataFrame(data)
+   fh.write_csv_main(main_df_csv)
    return main_df_csv
 
-def save_csv_file(data_df):
-   data_df.to_csv("E:\python_projects\wiki_data_collect\data\\)" + "main_csv_file.csv")
+#def save_csv_file(data_df):
+  # data_df.to_csv("E:\python_projects\wiki_data_collect\data\\)" + "main_csv_file.csv")
    
 
 def count_words(wiki_page_text):
@@ -39,6 +41,9 @@ def count_sections(wiki_page_text):
    return section_total
 
 
-def update_main_csv(df, page_name, word_count, section_count):
-    new_df = df[len(df)] = [page_name,word_count,section_count]
-   
+def update_main_csv(df, page_name, section_num, word_num):
+   new_data = { "page": [page_name], "section_num": [section_num], "word_num" : [word_num] }
+   pd.DataFrame.insert(df, loc=0, column=len(df), value=new_data, index=False)
+   #save_csv_file(df)
+   fh.write_csv_main(df)
+   return df

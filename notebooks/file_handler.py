@@ -20,7 +20,7 @@ def  write_page_text(page_name=str, page=str):
         else:
             page_file.write(page)
 def read_page_text(page_name=str):
-    with open(page_path_full + (page_name) + ".txt", 'r') as page_file:
+    with open(page_path_full + (page_name) + ".txt", 'r', encoding="utf-8") as page_file:
         page = page_file.readlines()
         return page
 
@@ -29,13 +29,14 @@ def create_init_main_csv():
     csv_info = {"csv_copy_num : [1]"}
     csv_info_df = pd.DataFrame(csv_info)
     csv_info_df.to_pickle(data_path_full + "csv_copy_num_store.pickle")
+
     
 def show_csv_copy_info():
     info = pd.read_pickle(data_path_full + "csv_copy_num_store.pickle")
     return info
 
 def write_csv_main(df_to_write):
-    df_to_write.to_csv(data_path_full + "csv_main.csv")
+    df_to_write.to_csv(data_path_full + "csv_main.csv", index=False)
     '''
     copy_info_df = pd.read_pickle(data_path_full  + "csv_copy_num_store.pickle")
     
