@@ -6,8 +6,8 @@ import file_handler as fh
 #creates inititial dataframe for wiki pages
 
 def create_main_df():
-   data = {"page": [], "section_num": [], "word_num": []}
-   main_df_csv = pd.DataFrame(data)
+   #data = [None, None, None]
+   main_df_csv = pd.DataFrame( columns=["page", "section_num", "word_num"])
    fh.write_csv_main(main_df_csv)
    return main_df_csv
 
@@ -42,8 +42,9 @@ def count_sections(wiki_page_text):
 
 
 def update_main_csv(df, page_name, section_num, word_num):
-   new_data = { "page": [page_name], "section_num": [section_num], "word_num" : [word_num] }
-   pd.DataFrame.insert(df, loc=0, column=len(df), value=new_data, index=False)
-   #save_csv_file(df)
-   fh.write_csv_main(df)
-   return df
+   #data = { "page": page_name, "section_num": section_num, "word_num": word_num }
+   new_page = [page_name, section_num, word_num]
+   main_df = fh.get_csv_main()
+   main_df.loc[len(main_df.index)] = new_page
+   fh.write_csv_main(main_df)
+  
