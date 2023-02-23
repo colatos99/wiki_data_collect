@@ -50,4 +50,9 @@ def seperate_wiki_page(wiki_page):
          word = str.split(temp_string, " ")
          word_list.append(word)
      return word_list
-    
+
+def drop_row(df, row_to_drop):
+   
+   new_df= pd.DataFrame.drop(df,index = [row_to_drop])
+   return new_df
+   

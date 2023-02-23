@@ -18,7 +18,9 @@ def  write_page_text(page_name=str, page=str):
         if page_file.readlines() != None:
             print("File Already exists!")
         else:
-            page_file.write(page)
+            page_file.write()
+            
+        
 def read_page_text(page_name=str):
     with open(page_path_full + (page_name) + ".txt", 'r', encoding="utf-8") as page_file:
         page = page_file.readlines()
@@ -46,10 +48,10 @@ def write_csv_main(df_to_write):
     copy_info_df[0][0] = copy_num
     copy_info_df.to_pickle(data_path_full + "csv_copy_num_store.pickle")
     '''
-    def read_page_text(page):
-        with open(page_path_full + page + ".txt", "x", encoding="utf-8") as page_file_r:
-            page_read = page_file_r.readline()
-            return page_read
+def read_page_text(page):
+     with open(page_path_full + page + ".txt", "x", encoding="utf-8") as page_file_r:
+        page_read = page_file_r.readline()
+     return page_read
 
 def get_csv_main():
     
