@@ -15,9 +15,11 @@ def create_main_df():
   # data_df.to_csv("E:\python_projects\wiki_data_collect\data\\)" + "main_csv_file.csv")
    
 
-def count_words(page_name):
-   word_list = seperate_wiki_page(page_name)
-   word_count = len(word_list)
+def count_words(page_text):
+   word_list = ""
+   for word in range(0, len(page_text)):
+      word_list = str(page_text[word]) + word_list
+   word_count = word_list.count(" ")
    return word_count
    
      
@@ -42,17 +44,17 @@ def update_main_csv(df, page_name, section_num, word_num):
    main_df = fh.get_csv_main()
    main_df.loc[len(main_df.index)] = new_page
    fh.write_csv_main(main_df)
-  
-def seperate_wiki_page(wiki_page):
-     word_list = []
-     for text in wiki_page:
-         temp_string = str(text)
-         word = str.split(temp_string, " ")
-         word_list.append(word)
-     return word_list
+
 
 def drop_row(df, row_to_drop):
    
    new_df= pd.DataFrame.drop(df,index = [row_to_drop])
    return new_df
+   
+def count_key_word(page_text, key_word):
+   word_list = ""
+   for word in range(0, len(page_text)):
+      word_list = str(page_text[word]) + word_list
+   word_count = word_list.count(" ")
+   return word_count
    

@@ -18,12 +18,12 @@ def  write_page_text(page_name=str, page=str):
        
             page_file.write(page)
             
-        
+'''        
 def read_page_text(page_name=str):
     with open(page_path_full + (page_name) + ".txt", 'r', encoding="utf-8") as page_file:
         page = page_file.readlines()
         return page
-
+'''
 def create_init_main_csv():
     csv_num = 1
     csv_info = {"csv_copy_num : [1]"}
@@ -47,8 +47,8 @@ def write_csv_main(df_to_write):
     copy_info_df.to_pickle(data_path_full + "csv_copy_num_store.pickle")
     '''
 def read_page_text(page):
-     with open(page_path_full + page + ".txt", "x", encoding="utf-8") as page_file_r:
-        page_read = page_file_r.readline()
+     with open(page_path_full + page + ".txt", "r", encoding="utf-8") as page_file_r:
+        page_read = page_file_r.readlines()
      return page_read
 
 def get_csv_main():
