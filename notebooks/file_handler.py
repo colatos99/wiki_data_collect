@@ -15,10 +15,8 @@ def get_data_path_full():
 
 def  write_page_text(page_name=str, page=str):
     with open( page_path_full + str(page_name) + ".txt", 'x', encoding= 'utf-8' ) as page_file:
-        if page_file.readlines() != None:
-            print("File Already exists!")
-        else:
-            page_file.write()
+       
+            page_file.write(page)
             
         
 def read_page_text(page_name=str):
