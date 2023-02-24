@@ -55,6 +55,15 @@ def count_key_word(page_text, key_word):
    word_list = ""
    for word in range(0, len(page_text)):
       word_list = str(page_text[word]) + word_list
-   word_count = word_list.count(" ")
+   word_count = word_list.count(key_word)
    return word_count
-   
+
+def add_key_result(page_name, key_word, key_result):
+   df = fh.get_csv_main()
+   counter = 0
+   for i in range(0,df[len(df)-1]):
+      if df[i][0]  == page_name:
+         row_num = i
+   pd.DataFrame.insert(df,row_num, key_word, key_result, allow_duplicates=False)
+   fh.write_csv_main(df)
+   return(df)
