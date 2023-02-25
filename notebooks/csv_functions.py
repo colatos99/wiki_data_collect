@@ -60,10 +60,13 @@ def count_key_word(page_text, key_word):
 
 def add_key_result(page_name, key_word, key_result):
    df = fh.get_csv_main()
-   counter = 0
-   for i in range(0,df[len(df)-1]):
-      if df[i][0]  == page_name:
-         row_num = i
-   pd.DataFrame.insert(df,row_num, key_word, key_result, allow_duplicates=False)
-   fh.write_csv_main(df)
-   return(df)
+   row_counter = 0
+   for i in range(0, len(df.index-1)):
+      if df.loc[i][0] == page_name:
+         row_counter = i
+   return i
+   
+   
+   
+   
+   
