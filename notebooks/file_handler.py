@@ -1,6 +1,6 @@
 import os
 import io
-import pandas as pd
+#import pandas as pd
 
 
 data_path_full = "E:\python_projects\wiki_data_collect\data\\"
@@ -24,6 +24,7 @@ def read_page_text(page_name=str):
         page = page_file.readlines()
         return page
 '''
+'''
 def create_init_main_csv():
     csv_num = 1
     csv_info = {"csv_copy_num : [1]"}
@@ -34,7 +35,7 @@ def create_init_main_csv():
 def show_csv_copy_info():
     info = pd.read_pickle(data_path_full + "csv_copy_num_store.pickle")
     return info
-
+'''
 def write_csv_main(df_to_write):
     df_to_write.to_csv(data_path_full + "csv_main.csv", index=False)
     '''
@@ -50,8 +51,9 @@ def read_page_text(page):
      with open(page_path_full + page + ".txt", "r", encoding="utf-8") as page_file_r:
         page_read = page_file_r.readlines()
      return page_read
-
+'''
 def get_csv_main():
     
     csv_read = pd.read_csv(data_path_full + "csv_main.csv")
     return csv_read
+'''
